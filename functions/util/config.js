@@ -8,3 +8,5 @@ module.exports = {
   appId: "1:222939562474:web:43d26dcd7c130cec887293",
   measurementId: "G-DDDXT3ESE3",
 };
+
+//
