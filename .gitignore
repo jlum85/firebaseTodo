@@ -67,4 +67,4 @@ node_modules/
 credentials
 .DS_Store
 
-/util/config.js
+funcions/util/config.js
