@@ -21,6 +21,8 @@ https://www.freecodecamp.org/news/how-to-build-a-todo-application-using-reactjs-
 
 https://github.com/Sharvin26/TodoApp
 
+### Remarques
+
 Attention : avant le firebase init , il faut faire firebase login
 
 pour tester la route app.get("/todos", getAllTodos); cf API/todo.js
@@ -29,5 +31,6 @@ prendre l'url de la fonction + /todos
 https://us-central1-todoapp-c29da.cloudfunctions.net/api/todos
 
 pour les functions firebase :
-cd /Users/jlum/After_Reacteur/Firebase
-firebase serve
+
+- pour l'émulation en local , commande firebase serve
+- pour la prod : firebase deploy
