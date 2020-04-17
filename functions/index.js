@@ -42,8 +42,8 @@ app.delete("/todo/:todoId", auth, deleteTodo);
 app.put("/todo/:todoId", auth, editTodo);
 
 // Users
-// app.post("/login", loginUser);
-app.post("/login", cors(corsOptions), loginUser);
+app.post("/login", loginUser);
+//app.post("/login", cors(corsOptions), loginUser);
 app.post("/signup", signUpUser);
 app.post("/user/image", auth, uploadProfilePhoto);
 app.get("/user", auth, getUserDetail);

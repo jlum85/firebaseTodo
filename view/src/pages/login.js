@@ -49,7 +49,7 @@ class login extends Component {
     this.state = {
       email: "",
       password: "",
-      errors: [],
+      errors: {},
       loading: false,
     };
   }
@@ -78,6 +78,7 @@ class login extends Component {
     axios
       .post(API + "/login", userData)
       .then((response) => {
+        console.log("logged with succes");
         localStorage.setItem("AuthToken", `Bearer ${response.data.token}`);
         this.setState({
           loading: false,
@@ -85,17 +86,28 @@ class login extends Component {
         this.props.history.push("/");
       })
       .catch((error) => {
-        console.log(error);
+        console.log("login failed ");
+        let errorMsg;
+        if (error.response && error.response.data) {
+          const { data, status, statusText } = error.response;
+          const general = data.general ? data.general : "";
+          errorMsg = `Error ${status} ${statusText} ${general} `;
+        } else {
+          errorMsg = error;
+        }
+        console.log({ errorMsg });
         this.setState({
-          errors: error,
+          errors: { general: errorMsg },
           loading: false,
         });
+        alert(errorMsg);
       });
   };
 
   render() {
     const { classes } = this.props;
     const { errors, loading } = this.state;
+
     return (
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -117,7 +129,8 @@ class login extends Component {
               name="email"
               autoComplete="email"
               autoFocus
-              helperText={errors.email}
+              helperText=" errors.email "
+              // helperText={errors.email}
               error={errors.email ? true : false}
               onChange={this.handleChange}
             />
