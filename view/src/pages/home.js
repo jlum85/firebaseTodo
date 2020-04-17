@@ -92,7 +92,7 @@ class home extends Component {
     };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     authMiddleWare(this.props.history);
     const authToken = localStorage.getItem("AuthToken");
     axios.defaults.headers.common = { Authorization: `${authToken}` };
@@ -156,7 +156,6 @@ class home extends Component {
                 className={classes.avatar}
               />
               <p>
-                {" "}
                 {this.state.firstName} {this.state.lastName}
               </p>
             </center>
@@ -164,24 +163,21 @@ class home extends Component {
             <List>
               <ListItem button key="Todo" onClick={this.loadTodoPage}>
                 <ListItemIcon>
-                  {" "}
-                  <NotesIcon />{" "}
+                  <NotesIcon />
                 </ListItemIcon>
                 <ListItemText primary="Todo" />
               </ListItem>
 
               <ListItem button key="Account" onClick={this.loadAccountPage}>
                 <ListItemIcon>
-                  {" "}
-                  <AccountBoxIcon />{" "}
+                  <AccountBoxIcon />
                 </ListItemIcon>
                 <ListItemText primary="Account" />
               </ListItem>
 
               <ListItem button key="Logout" onClick={this.logoutHandler}>
                 <ListItemIcon>
-                  {" "}
-                  <ExitToAppIcon />{" "}
+                  <ExitToAppIcon />
                 </ListItemIcon>
                 <ListItemText primary="Logout" />
               </ListItem>

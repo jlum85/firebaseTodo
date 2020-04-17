@@ -86,7 +86,7 @@ class account extends Component {
     };
   }
 
-  componentWillMount = () => {
+  componentDidMount = () => {
     authMiddleWare(this.props.history);
     const authToken = localStorage.getItem("AuthToken");
     axios.defaults.headers.common = { Authorization: `${authToken}` };
@@ -225,7 +225,6 @@ class account extends Component {
 
                   {this.state.imageError ? (
                     <div className={classes.customError}>
-                      {" "}
                       Wrong Image Format || Supported Format are PNG and JPG
                     </div>
                   ) : (
