@@ -122,8 +122,9 @@ class todo extends Component {
   };
 
   componentDidMount = () => {
-    authMiddleWare(this.props.history);
-    const authToken = localStorage.getItem("AuthToken");
+    const authToken = authMiddleWare(this.props.history);
+    if (!authToken) return;
+
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     axios
       .get(API + "/todos")
@@ -139,8 +140,9 @@ class todo extends Component {
   };
 
   deleteTodoHandler(data) {
-    authMiddleWare(this.props.history);
-    const authToken = localStorage.getItem("AuthToken");
+    const authToken = authMiddleWare(this.props.history);
+    if (!authToken) return;
+
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     let todoId = data.todo.todoId;
     axios
@@ -212,8 +214,10 @@ class todo extends Component {
     };
 
     const handleSubmit = (event) => {
-      authMiddleWare(this.props.history);
       event.preventDefault();
+      const authToken = authMiddleWare(this.props.history);
+      if (!authToken) return;
+
       const userTodo = {
         title: this.state.title,
         body: this.state.body,
@@ -232,7 +236,7 @@ class todo extends Component {
           data: userTodo,
         };
       }
-      const authToken = localStorage.getItem("AuthToken");
+
       axios.defaults.headers.common = { Authorization: `${authToken}` };
       axios(options)
         .then(() => {

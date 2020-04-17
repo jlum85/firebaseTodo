@@ -54,13 +54,14 @@ class login extends Component {
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.UI.errors) {
-      this.setState({
-        errors: nextProps.UI.errors,
-      });
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //   if (nextProps.UI.errors) {
+  //     console.log(nextProps.UI.error);
+  //     this.setState({
+  //       errors: nextProps.UI.errors,
+  //     });
+  //   }
+  // }
 
   handleChange = (event) => {
     this.setState({
@@ -95,12 +96,10 @@ class login extends Component {
         } else {
           errorMsg = error;
         }
-        console.log({ errorMsg });
         this.setState({
           errors: { general: errorMsg },
           loading: false,
         });
-        alert(errorMsg);
       });
   };
 

@@ -3,4 +3,5 @@ export const authMiddleWare = (history) => {
   if (authToken === null) {
     history.push("/login");
   }
+  return authToken;
 };

@@ -87,8 +87,9 @@ class account extends Component {
   }
 
   componentDidMount = () => {
-    authMiddleWare(this.props.history);
-    const authToken = localStorage.getItem("AuthToken");
+    const authToken = authMiddleWare(this.props.history);
+    if (!authToken) return;
+
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     axios
       .get(API + "/user")
@@ -130,8 +131,9 @@ class account extends Component {
     this.setState({
       uiLoading: true,
     });
-    authMiddleWare(this.props.history);
-    const authToken = localStorage.getItem("AuthToken");
+    const authToken = authMiddleWare(this.props.history);
+    if (!authToken) return;
+
     let form_data = new FormData();
     form_data.append("image", this.state.image);
     form_data.append("content", this.state.content);
@@ -160,8 +162,9 @@ class account extends Component {
   updateFormValues = (event) => {
     event.preventDefault();
     this.setState({ buttonLoading: true });
-    authMiddleWare(this.props.history);
-    const authToken = localStorage.getItem("AuthToken");
+    const authToken = authMiddleWare(this.props.history);
+    if (!authToken) return;
+
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     const formRequest = {
       firstName: this.state.firstName,

@@ -62,7 +62,7 @@ const styles = (theme) => ({
   toolbar: theme.mixins.toolbar,
 });
 
-class home extends Component {
+class Home extends Component {
   state = {
     render: false,
   };
@@ -93,8 +93,9 @@ class home extends Component {
   }
 
   componentDidMount = () => {
-    authMiddleWare(this.props.history);
-    const authToken = localStorage.getItem("AuthToken");
+    const authToken = authMiddleWare(this.props.history);
+    if (!authToken) return;
+
     axios.defaults.headers.common = { Authorization: `${authToken}` };
     axios
       .get(API + "/user")
@@ -191,4 +192,4 @@ class home extends Component {
   }
 }
 
-export default withStyles(styles)(home);
+export default withStyles(styles)(Home);
