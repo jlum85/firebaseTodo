@@ -1,6 +1,20 @@
-# Firebase
+# Todo Application using ReactJS and Firebase
 
-## ressources
+---
+
+### Account creation:
+
+![Account](doc/Account.gif)
+
+### Todo Dashboard:
+
+![Account](doc/Todo.gif)
+
+### Application Architecture:
+
+![Application Architecture](doc/TodoApp.png)
+
+### Ressources
 
 tuto from :
 https://www.freecodecamp.org/news/how-to-build-a-todo-application-using-reactjs-and-firebase/
