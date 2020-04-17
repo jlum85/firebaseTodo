@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import withStyles from "@material-ui/core/styles/withStyles";
 import Container from "@material-ui/core/Container";
 import CircularProgress from "@material-ui/core/CircularProgress";
-
+import { API } from "../utils/global";
 import axios from "axios";
 
 const styles = (theme) => ({
@@ -76,7 +76,7 @@ class login extends Component {
       password: this.state.password,
     };
     axios
-      .post("/login", userData)
+      .post(API + "/login", userData)
       .then((response) => {
         localStorage.setItem("AuthToken", `Bearer ${response.data.token}`);
         this.setState({
@@ -85,8 +85,9 @@ class login extends Component {
         this.props.history.push("/");
       })
       .catch((error) => {
+        console.log(error);
         this.setState({
-          errors: error.response.data,
+          errors: error,
           loading: false,
         });
       });
