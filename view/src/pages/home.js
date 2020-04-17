@@ -185,7 +185,7 @@ class Home extends Component {
             </List>
           </Drawer>
 
-          <div>{this.state.render ? <Account /> : <Todo />}</div>
+          <>{this.state.render ? <Account /> : <Todo />}</>
         </div>
       );
     }
