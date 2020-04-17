@@ -13,3 +13,7 @@ pour tester la route app.get("/todos", getAllTodos); cf API/todo.js
 prendre l'url de la fonction + /todos
 
 https://us-central1-todoapp-c29da.cloudfunctions.net/api/todos
+
+pour les functions firebase :
+cd /Users/jlum/After_Reacteur/Firebase
+firebase serve
