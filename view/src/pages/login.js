@@ -129,8 +129,7 @@ class login extends Component {
               name="email"
               autoComplete="email"
               autoFocus
-              helperText=" errors.email "
-              // helperText={errors.email}
+              helperText={errors.email}
               error={errors.email ? true : false}
               onChange={this.handleChange}
             />
